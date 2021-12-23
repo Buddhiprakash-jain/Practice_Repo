@@ -1,7 +1,7 @@
 <?php
 
 print("Hlo from openshift");
-print(`ifconfig`);
+print("Again Code Changes");
 print("Code Updated");
 
 ?>
