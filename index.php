@@ -1,7 +1,4 @@
 <?php
 
-print("Hlo from openshift");
-print("Again Code Changes");
-print("Code Updated");
-
+print("<h1>Hlo from Openshift Console!!</h1>");
 ?>
