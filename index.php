@@ -1,4 +1,4 @@
-<?php
-
-print("<h1>Hlo from Openshift Console!!</h1>");
-?>
+date
+cal
+echo "hello download code and run
+id
