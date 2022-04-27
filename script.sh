@@ -1,4 +1,5 @@
 date
 cal
-echo "hello download code and run
+echo "hello download code and run"
 id
+pwd
