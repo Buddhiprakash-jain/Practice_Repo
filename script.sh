@@ -1,4 +1,3 @@
 date
 cal
 pwd
-id
