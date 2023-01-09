@@ -8,14 +8,14 @@ from six.moves import input
 
 compute = googleapiclient.discovery.build('compute', 'v1')
 
-def create_instance(compute, project, zone, name, bucket):
+def create_instance(request):
     # Get the latest Debian Jessie image.
     image_response = compute.images().getFromFamily(
         project='rhel-cloud', family='rhel-8').execute()
     source_disk_image = image_response['selfLink']
 
     # Configure the machine
-    machine_type = "zones/%s/machineTypes/n1-standard-1" % zone
+   # machine_type = "zones/%s/machineTypes/n1-standard-1" % zone
     # startup_script = open(
     #     os.path.join(
     #         os.path.dirname(__file__), 'startup-script.sh'), 'r').read()
@@ -23,8 +23,8 @@ def create_instance(compute, project, zone, name, bucket):
     # image_caption = "Ready for dessert?"
 
     config = {
-        'name': name,
-        'machineType': machine_type,
+        'name': 'pyvm',
+        'machineType': 'zones/asia-southeast1-b/machineTypes/n1-standard-1',
 
         # Specify the boot disk and the image to use as a source.
         'disks': [
@@ -83,11 +83,7 @@ def create_instance(compute, project, zone, name, bucket):
     x = list_instances(compute,'basic-tube-373302' ,'asia-southeast1-b')
     for i in range(len(x)):
         if (x[i]["name"]) == "pyvm":
-            return "'pyvm' Already Exists.."
-        else:
-            return compute.instances().insert(
-        project=project,
-        zone=zone,
-        body=config).execute()
-
-create_instance(compute,'basic-tube-373302' ,'asia-southeast1-b', 'pyvm','pybucket')
+            return "pyvm Already Exists.."
+    r = compute.instances().insert(project='basic-tube-373302',zone='asia-southeast1-b',body=config).execute()
+    return "VM Creating.."
+#create_instance(compute,'basic-tube-373302' ,'asia-southeast1-b', 'pyvm','pybucket')
