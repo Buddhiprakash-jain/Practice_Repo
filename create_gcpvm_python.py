@@ -75,8 +75,17 @@ def create_instance(compute, project, zone, name, bucket):
             # }]
         }
     }
+    def list_instances(compute, project, zone):
+        result = compute.instances().list(project=project, zone=zone).execute()
+        return result['items'] if 'items' in result else None
+        # [END list_instances]
 
-    return compute.instances().insert(
+    x = list_instances(compute,'basic-tube-373302' ,'asia-southeast1-b')
+    for i in range(len(x)):
+        if (x[i]["name"]) == "pyvm":
+            return "'pyvm' Already Exists.."
+        else:
+            return compute.instances().insert(
         project=project,
         zone=zone,
         body=config).execute()
