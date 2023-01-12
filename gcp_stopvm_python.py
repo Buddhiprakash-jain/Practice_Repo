@@ -25,4 +25,4 @@ def stop_vm(request):
                 	result = compute.instances().stop(project='basic-tube-373302', zone=zone, instance=name).execute()
                 	return "VM %s Stopping.." % name
     return "VM %s not found.." % name
-        
+    
