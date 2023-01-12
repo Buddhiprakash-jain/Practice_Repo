@@ -22,4 +22,3 @@ def delete_instance(request):
                  result = compute.instances().delete(project='basic-tube-373302',zone=zone,instance=name).execute()
                  return "VM %s Deleting" % name
     return "VM %s not found.." % name
-        
