@@ -12,6 +12,7 @@ def create_instance(request):
     compute = googleapiclient.discovery.build('compute', 'v1')
     name = request.args.get('name')
     zone = request.args.get('zone')
+    machine_type = request.args.get('machine_type')
     # Get the latest Debian Jessie image.
     image_response = compute.images().getFromFamily(
         project='rhel-cloud', family='rhel-8').execute()
@@ -27,7 +28,7 @@ def create_instance(request):
 
     config = {
         'name': name,
-        'machineType': 'zones/%s/machineTypes/n1-standard-1' % zone,
+        'machineType': 'zones/%s/machineTypes/%s' % (zone , machine_type),
 
         # Specify the boot disk and the image to use as a source.
         'disks': [
