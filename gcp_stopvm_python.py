@@ -22,10 +22,6 @@ def stop_vm(request):
         result = compute.instances().list(project=project, zone=zone).execute()
         return result['items'] if 'items' in result else None
         # [END list_instances]
-    sql = "insert into newtable (instanceName,operation,zone) values (%s,%s,%s)"
-    val = (name,"STOP",zone)
-    mycursor.execute(sql, val)
-    mydb.commit()
     x = list_instances(compute,'basic-tube-373302' ,zone)
     for i in range(len(x)):
 	    if (x[i]["name"]) == name:
@@ -33,7 +29,12 @@ def stop_vm(request):
                 	return "VM %s already in stopping state.." % name
             	else:
                 	result = compute.instances().stop(project='basic-tube-373302', zone=zone, instance=name).execute()
+                    	sql = "insert into newtable(instanceName,operation,zone,returnmessage) values (%s,%s,%s,%s)"
+                    	val = (name,"STOP",zone,"VM %s STOP" % name)
+                    	mycursor.execute(sql,val)
+                    	mydb.commit()
                 	return "VM %s Stopping.." % name
     return "VM %s not found.." % name
+
 
     
