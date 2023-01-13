@@ -27,12 +27,12 @@ def start_vm(request):
             	if (x[i]["status"]) == "RUNNING":
                 	return "VM %s already in running state.." % name
             	else:
-                	result = compute.instances().start(project='basic-tube-373302', zone=zone, instance=name).execute()
-			sql = "insert into newtable (instanceName,operation,zone,returnmessage) values (%s,%s,%s,%s)"
-			val = (name,"START",zone,"VM %s START" % name)
-			mycursor.execute(sql, val)
-			mydb.commit()
-                	return "VM %s Starting.." % name
+                    result = compute.instances().start(project='basic-tube-373302', zone=zone, instance=name).execute()
+                    sql = "insert into newtable (instanceName,operation,zone,returnmessage) values (%s,%s,%s,%s)"
+                    val = (name,"START",zone,"VM %s START" % name)
+                    mycursor.execute(sql, val)
+                    mydb.commit()
+                    return "VM %s Starting.." % name
     return "Vm %s not found.." % name
 
         
