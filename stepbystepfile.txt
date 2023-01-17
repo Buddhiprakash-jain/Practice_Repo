@@ -6,7 +6,7 @@ STEP 4:- Run the below commands in instance
           1. #for choose java version
              "sudo alternatives --config java"
 
-          2. #Add below code in pom.xml in plugins tag file for skip test cases
+          2. #Add below code in /docker-postgres-springboot-demo folder in pom.xml file in plugins tag  for skip test cases
           <plugin>  
             <groupId>org.apache.maven.plugins</groupId>  
             <artifactId>maven-surefire-plugin</artifactId>  
@@ -24,7 +24,7 @@ STEP 4:- Run the below commands in instance
 
          5. #Push image to ECR.
 
-         6. Make changes in "docker-compose.yml" 
+         6. Make changes in /docker-postgres-springboot-demo folder in "docker-compose.yml" file 
             - in springboot section give ecr image name
             - in springboot section in environment section add following
                     environment:
@@ -35,7 +35,7 @@ STEP 4:- Run the below commands in instance
             - comment 'depends on' keyword.
             - remove postgresdb container configuration
            
-         7. Make changes in "src/main/resource/application.yml" 
+         7. Make changes in /docker-postgres-springboot-demo folder in  "src/main/resource/application.yml"  file
             - give database host
             - give database url
             - give database username
