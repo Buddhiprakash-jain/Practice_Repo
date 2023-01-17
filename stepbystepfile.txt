@@ -1,8 +1,8 @@
 STEP 1:- create cloudformation stack with setup.yml file and change the parameters in setup.yml file according to your requirement.
 
-STEP 3:- create ECR repo
+STEP 2:- create ECR repo
 
-STEP 4:- Run the below commands in instance
+STEP 3:- Run the below commands in instance
           1. #for choose java version
              "sudo alternatives --config java"
 
