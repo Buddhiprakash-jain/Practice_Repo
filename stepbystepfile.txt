@@ -1,0 +1,46 @@
+STEP 1:- create cloudformation stack with setup.yml file and change the parameters in setup.yml file according to your requirement.
+
+STEP 3:- create ECR repo
+
+STEP 4:- Run the below commands in instance
+          1. #for choose java version
+             "sudo alternatives --config java"
+
+          2. #Add below code in pom.xml in plugins tag file for skip test cases
+          <plugin>  
+            <groupId>org.apache.maven.plugins</groupId>  
+            <artifactId>maven-surefire-plugin</artifactId>  
+            <version>2.22.2</version>  
+            <configuration>  
+            <skipTests>true</skipTests>  
+            </configuration>  
+         </plugin> 
+
+         3. #Run below command for creating jar file
+             "mvn clean install"
+
+         4. #Login into aws by run given below command
+             "aws configure"
+
+         5. #Push image to ECR.
+
+         6. Make changes in "docker-compose.yml" 
+            - in springboot section give ecr image name
+            - in springboot section in environment section add following
+                    environment:
+                              - POSTGRES_HOST=""
+                              - POSTGRES_USER=""
+                              - POSTGRES_PASSWORD=""
+                              - POSTGRES_DB=""
+            - comment 'depends on' keyword.
+            - remove postgresdb container configuration
+           
+         7. Make changes in "src/main/resource/application.yml" 
+            - give database host
+            - give database url
+            - give database username
+            - give database password
+
+STEP 4:- Finally run "docker-compose up &" cmd
+
+STEP 5:- access the application "http://<alb-dns>:8081/swagger-ui/
