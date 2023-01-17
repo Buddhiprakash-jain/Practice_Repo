@@ -98,3 +98,4 @@ def create_instance(request):
     mydb.commit()
     return "VM %s Creating.." % name
 #create_instance(compute,'basic-tube-373302' ,'asia-southeast1-b', 'pyvm','pybucket')
+#create table newtable (id INT AUTO_INCREMENT PRIMARY KEY, instanceName varchar(255) , operation varchar(255) , zone varchar(255), returnmessage varchar(255) ,InDtTm DATETIME DEFAULT CURRENT_TIMESTAMP);
