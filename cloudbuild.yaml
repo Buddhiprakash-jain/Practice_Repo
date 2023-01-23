@@ -1,5 +1,5 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/my-image', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/${PROJECT_ID}/myrepo:latest', '.']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/myrepo:latest']
