@@ -1,4 +1,4 @@
 authname "lw"
 authtype basic
 authuserfile /etc/www.passwd
-reqquire valid-user
+require valid-user
