@@ -10,3 +10,4 @@ COPY httpd.conf /usr/local/apache2/conf/
 RUN echo "buddhi" | htpasswd -ic /etc/www.passwd buddhi
 
 EXPOSE 80
+#hello
